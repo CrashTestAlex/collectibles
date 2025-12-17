@@ -6,6 +6,12 @@ Collectible's &amp; Currency for your ballsdex clone! If you are unaware of how 
 ## What this contains
 
   - A currency system with /daily and /sell commands. Feel free to expand on the use of currency
+  (Currency should be added to the Player model as an integer field. Below is an example you can use!)
+
+```py
+quantity = models.PositiveIntegerField(default=1)
+```
+  
   - Collectible items to be purchased with said currency
   - A /store & /completion command for the collectibles
 
