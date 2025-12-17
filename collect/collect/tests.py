@@ -6,6 +6,7 @@ class CMTests(TestCase):
         c = Collectible.objects.create(
             name="Test Item",
             emoji=123, # add working ID
+            image_url="https://avatars.githubusercontent.com/u/200025324?v=4",
             cost=50,
             requirement_type="total",
             requirement_value="10", # own 10 total balls
@@ -16,3 +17,4 @@ class CMTests(TestCase):
         self.assertEqual(c.requirement_type, "total")
         self.assertEqual(c.requirement_value, "10")
         self.assertIn("Test Item", str(c))
+
