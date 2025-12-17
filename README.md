@@ -9,7 +9,7 @@ Collectible's &amp; Currency for your ballsdex clone! If you are unaware of how 
   (Currency should be added to the Player model as an integer field. Below is an example you can use!)
 
 ```py
-quantity = models.PositiveIntegerField(default=1)
+currency = models.PositiveIntegerField(default=1)
 ```
   
   - Collectible items to be purchased with said currency
