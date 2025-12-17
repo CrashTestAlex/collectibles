@@ -1,0 +1,18 @@
+[project]
+name = "collect"
+version = "0.1.0"
+description = "Collectible's and Currency for your ballsdex clone"
+authors = [{ name = "Alex K." }]
+requires-python = ">=3.10"
+
+dependencies = [
+    "Django>=4.2",
+    "discord.py>=2.6.3"
+]
+
+[tool.setuptools.packages.find]
+where = ["collect"]
+
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
