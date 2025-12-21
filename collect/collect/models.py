@@ -38,6 +38,9 @@ class Collectible(models.Model):
         db_table = "collectible"
         verbose_name = "Collectible"
         verbose_name_plural = "Collectibles"
+        indexes = [
+            models.Index(fields=["requirement_type", "requirement_value"]),
+        ]
 
 class PlayerCollectible(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name="collectibles")
@@ -53,4 +56,5 @@ class PlayerCollectible(models.Model):
         ]
 
     def __str__(self):
+
         return f"{self.player} owns {self.collectible}"
