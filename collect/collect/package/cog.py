@@ -15,8 +15,7 @@ if TYPE_CHECKING:
 
 log = logging.getLogger("ballsdex.packages.collectibles")
 
-# also before u touch anything pls remember to add the currency field in the Player model as its crucial for the store & purchasing feature
-# make sure to edit tests.py to fit emoji ID's
+# make sure to edit tests.py to fit a working emoji ID
 
 class PrevButton(discord.ui.Button):
     def __init__(self):
@@ -243,13 +242,13 @@ def purchase_collectible(player: Player, collectible: Collectible) -> str:
     if PlayerCollectible.objects.filter(player=player, collectible=collectible).exists():
         return "You already own this collectible!"
 
-    if player.currency < collectible.cost:
-        return f"Not enough currency. You need 🪙**{collectible.cost}**, but you only have 🪙**{player.currency}**."
+    if player.money < collectible.cost:
+        return f"Not enough money. You need 🪙**{collectible.cost}**, but you only have 🪙**{player.currency}**."
 
     if not meets_requirement(player, collectible):
         return "You don't meet the requirement for this collectible!"
 
-    player.currency -= collectible.cost
+    player.money -= collectible.cost
     player.save()
 
     PlayerCollectible.objects.create(player=player, collectible=collectible)
@@ -372,3 +371,4 @@ class Collectibles(commands.GroupCog, group_name="collectibles"):
             embed.add_field(name=name, value=value, inline=False)
 
         await interaction.followup.send(embed=embed)
+
